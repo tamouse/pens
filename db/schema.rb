@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_062247) do
+ActiveRecord::Schema.define(version: 2018_11_30_074420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2018_11_30_062247) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
+  create_table "inkings", force: :cascade do |t|
+    t.string "name"
+    t.date "ink_date"
+    t.text "notes"
+    t.bigint "pen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pen_id"], name: "index_inkings_on_pen_id"
   end
 
   create_table "manufacturers", force: :cascade do |t|
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_062247) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "inkings", "pens"
   add_foreign_key "pens", "manufacturers"
   add_foreign_key "pens", "vendors"
 end
