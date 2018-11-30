@@ -62,3 +62,8 @@ Added apollo client libraries to `package.json`:
 
 See the [apollo client docs](https://www.apollographql.com/docs/react/) for more info on using apollo client
 
+Added `rails-erd` gem which requires `graphviz` to be installed on the machine.
+
+I installed from Homebrew via:
+
+     brew install graphviz
